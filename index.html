@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모카 하우스 | 동네 카페</title>
+<style>
+  :root {
+    --brown-dark: #3b2418;
+    --brown: #6f4e37;
+    --brown-light: #a9744f;
+    --cream: #faf3e9;
+    --cream-dark: #f0e2cd;
+    --accent: #c98a4b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color: var(--brown-dark);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+    background: rgba(250, 243, 233, 0.9);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  header .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--brown-dark);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--brown);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 6% 60px;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  }
+  .hero .eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    color: var(--brown-dark);
+    margin-bottom: 20px;
+  }
+  .hero p {
+    max-width: 520px;
+    color: var(--brown);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--brown-dark);
+    color: var(--cream);
+    padding: 14px 34px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+  section { padding: 90px 6%; max-width: 1080px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .section-title .eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  .section-title h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about .img-box {
+    height: 320px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--brown-light), var(--brown-dark));
+  }
+  .about p { color: var(--brown); margin-bottom: 16px; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .menu-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 6px 20px rgba(59, 36, 24, 0.06);
+    border: 1px solid var(--cream-dark);
+  }
+  .menu-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--brown-dark);
+  }
+  .menu-item p {
+    color: var(--brown-light);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  .menu-item .price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.05rem;
+  }
+
+  .info {
+    background: var(--brown-dark);
+    color: var(--cream);
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 60px 6%;
+  }
+  .info .card h3 {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .info .card p { color: var(--cream-dark); font-size: 0.95rem; }
+
+  footer {
+    text-align: center;
+    padding: 36px 6%;
+    color: var(--brown-light);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  @media (max-width: 720px) {
+    .about { grid-template-columns: 1fr; }
+    .about .img-box { height: 220px; }
+    nav ul { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MOCA HOUSE</div>
+  <nav>
+    <ul>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#menu">메뉴</a></li>
+      <li><a href="#info">오시는 길</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Since 2020</div>
+  <h1>천천히, 진하게<br>모카 하우스</h1>
+  <p>매일 새벽 로스팅한 원두로 내린 커피와 직접 구운 디저트를 즐길 수 있는 동네 카페입니다.</p>
+  <a class="btn" href="#menu">메뉴 보러가기</a>
+</section>
+
+<section id="about" class="about">
+  <div class="img-box"></div>
+  <div>
+    <div class="eyebrow">About Us</div>
+    <h2 style="margin: 10px 0 20px; font-size: 1.8rem;">편안한 공간, 진심을 담은 한 잔</h2>
+    <p>모카 하우스는 바쁜 일상 속에서 잠시 쉬어갈 수 있는 공간을 만들고 싶다는 마음에서 시작했습니다.</p>
+    <p>좋은 원두를 정직하게 내리고, 손님 한 분 한 분에게 정성을 다하는 것이 저희의 원칙입니다.</p>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-title">
+    <div class="eyebrow">Menu</div>
+    <h2>시그니처 메뉴</h2>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <h3>핸드드립 커피</h3>
+      <p>그날그날 엄선한 싱글 오리진 원두</p>
+      <div class="price">6,500원</div>
+    </div>
+    <div class="menu-item">
+      <h3>카페 라떼</h3>
+      <p>부드러운 우유와 진한 에스프레소</p>
+      <div class="price">5,500원</div>
+    </div>
+    <div class="menu-item">
+      <h3>수제 크로플</h3>
+      <p>매일 아침 직접 구운 바삭한 크로플</p>
+      <div class="price">7,000원</div>
+    </div>
+    <div class="menu-item">
+      <h3>바닐라 콜드브루</h3>
+      <p>12시간 저온 추출한 콜드브루</p>
+      <div class="price">6,000원</div>
+    </div>
+  </div>
+</section>
+
+<section id="info">
+  <div class="section-title">
+    <div class="eyebrow">Visit Us</div>
+    <h2>오시는 길</h2>
+  </div>
+  <div class="info">
+    <div class="card">
+      <h3>주소</h3>
+      <p>서울특별시 어딘가구 카페로 123<br>모카 하우스 1층</p>
+    </div>
+    <div class="card">
+      <h3>영업시간</h3>
+      <p>매일 09:00 - 21:00<br>연중무휴</p>
+    </div>
+    <div class="card">
+      <h3>연락처</h3>
+      <p>0507-0000-0000<br>@mocahouse_cafe</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 MOCA HOUSE. All rights reserved.
+</footer>
+
+</body>
+</html>
